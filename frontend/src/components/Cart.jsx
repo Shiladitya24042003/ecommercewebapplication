@@ -1,16 +1,26 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
+import tick from "../../public/tick.svg"
 
 const Cart = () => {
-    const { cartItems, removeFromCart } = useCart();
+    const { cartItems, removeFromCart, clearCart } = useCart(); // Import clearCart
 
     const calculateTotal = () => {
         return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     };
 
     const handleCheckout = () => {
-        // Logic for handling checkout (e.g., redirect to payment page)
-        alert('Proceeding to checkout');
+        // Clear the cart
+        clearCart();
+
+        // Open the modal
+        const modal = document.getElementById('my_modal_2');
+        modal.showModal();
+
+        // Close the modal after 1 second (1000 milliseconds)
+        setTimeout(() => {
+            modal.close();
+        }, 1000);
     };
 
     return (
@@ -68,6 +78,22 @@ const Cart = () => {
                     </div>
                 </>
             )}
+
+            {/* Modal for Checkout */}
+            <dialog id="my_modal_2" className="modal">
+                <div className="modal-box" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', width: 'fit-content', flexDirection: 'column' }}>
+                    {/* Payment successful message */}
+                    <h3 style={{ textAlign: 'center', marginBottom: '10px', fontSize: '18px', color: 'green' }}>
+                        Payment successful!
+                    </h3>
+                    {/* Tick mark image */}
+                    <img src={tick} alt="Tick mark" style={{ display: 'block', margin: '0 auto' }} />
+                </div>
+                <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                </form>
+            </dialog>
+
         </div>
     );
 };
