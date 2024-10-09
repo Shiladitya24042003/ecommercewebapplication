@@ -18,7 +18,7 @@ function Cards({ item, onClick }) {
                 <figure>
                     <img src={item.image} alt={item.title} />
                 </figure>
-                <div className="card-body">
+                <div className="card-body colour">
                     <h2 className="card-title">
                         {item.title}
                         <div className="badge badge-accent">{item.category}</div>
@@ -27,11 +27,11 @@ function Cards({ item, onClick }) {
                     <div className="card-actions justify-between">
                         <div className="badge badge-outline">₹{item.price}</div>
                         <div className="badge badge-outline hover:bg-pink-500 hover:text-white duration-200">Buy Now</div>
-                        <button 
+                        <button
                             className='btn btn-rounded hover:bg-orange-600 hover:text-black transition: 200'
-                            onClick={(e) => { 
+                            onClick={(e) => {
                                 e.stopPropagation();  // Prevent the card click from firing
-                                handleAddToCart(); 
+                                handleAddToCart();
                             }}
                         >
                             Add to Cart
