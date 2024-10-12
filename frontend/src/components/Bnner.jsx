@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import banner from "../../public/Banner.jpg";
+import { useNavigate } from 'react-router-dom';
 
 // URLs of book images
 const bookImages = [
@@ -18,6 +19,9 @@ function Bnner() {
         }, 3000); // Slide every 3 seconds
         return () => clearInterval(interval);
     }, []);
+
+    const navigate = useNavigate();
+
 
     return (
         <>
@@ -47,26 +51,32 @@ function Bnner() {
                                     placeholder="Email"
                                 />
                             </label>
-                            <button className="btn mt-6 border border-[#545353] text-white">Secondary</button>
+                            <button
+                                className="btn mt-6 border border-transparent text-white bg-gradient-to-r from-blue-600 via-pink-500 to-violet-600 bg-[length:200%_200%] animate-gradient px-6 py-2 rounded-lg"
+                                onClick={() => navigate('/course')}
+                            >
+                                Get Started
+                            </button>
+
                         </div>
                     </div>
                 </div>
 
                 {/* Right Side - Slideshow */}
                 <div className="w-full md:w-1/2 my-20 mx-10 relative md:block hidden">
-    {/* <img src={banner} alt="Banner" className="w-full h-full object-contain" /> */}
-    <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
-        <div className="w-1/2 h-auto overflow-hidden">
-            {/* Slideshow */}
-            <img
-                src={bookImages[currentIndex]}
-                alt={`Book ${currentIndex + 1}`}
-                className="w-full h-auto object-cover rounded-lg transition-opacity duration-500 ease-in-out mt-32"
-                key={currentIndex}
-            />
-        </div>
-    </div>
-</div>
+                    {/* <img src={banner} alt="Banner" className="w-full h-full object-contain" /> */}
+                    <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+                        <div className="w-1/2 h-auto overflow-hidden">
+                            {/* Slideshow */}
+                            <img
+                                src={bookImages[currentIndex]}
+                                alt={`Book ${currentIndex + 1}`}
+                                className="w-full h-auto object-cover rounded-lg transition-opacity duration-500 ease-in-out mt-32"
+                                key={currentIndex}
+                            />
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </>

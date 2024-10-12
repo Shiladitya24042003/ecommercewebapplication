@@ -39,9 +39,29 @@ function Navbar() {
 
     const navItems = (
         <>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/course'>Courses</Link></li>
-            <li><a href='/about'>About</a></li>
+            <div className="relative">
+                <ul className="flex space-x-2">
+                    <li className="group relative">
+                        <Link to="/" className="hover:text-blue-500">
+                            Home
+                            <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                        </Link>
+                    </li>
+                    <li className="group relative">
+                        <Link to="/course" className="hover:text-blue-500">
+                            Courses
+                            <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                        </Link>
+                    </li>
+                    <li className="group relative">
+                        <a href="/about" className="hover:text-blue-500">
+                            About
+                            <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
         </>
     );
 
@@ -127,7 +147,7 @@ function Navbar() {
                     </div>
 
                     <div className="navbar-end flex items-center">
-                    {
+                        {
                             authUser ? <Logout /> :
 
                                 (<div className="px-3">

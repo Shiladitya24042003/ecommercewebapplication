@@ -13,7 +13,8 @@ function AdminLogin() {
             try {
                 const res = await axios.get("http://localhost:4001/book");
                 console.log(res);
-                setBooks(res.data);
+                const sortedBooks = res.data.sort((a, b) => a.id - b.id);
+                setBooks(sortedBooks);
             } catch (error) {
                 console.log(error);
             }
@@ -43,7 +44,7 @@ function AdminLogin() {
                 <div className='flex justify-between items-center mx-16 md:mx-40'>
                     <div><h1 className='text-2xl md:text-4xl'>All Books List</h1></div>
                     <div>
-                        <a 
+                        <a
                             style={{
                                 backgroundColor: 'transparent',
                                 color: 'white',
@@ -103,9 +104,9 @@ function AdminLogin() {
                                 }
                             }}
                         >
+                            <h3 className=''>{item.id}</h3>
                             <h3>{item.title}</h3>
                             <p>{item.author}</p>
-                            <h3 className='text-right'>{item._id}</h3>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24"
