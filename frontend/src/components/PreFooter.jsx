@@ -55,6 +55,9 @@ function PreFooter() {
         </p>
       </div>
 
+      <div className="flex justify-center mt-12">
+        <hr className="w-4/5 border-t-2 border-gray-600" />
+      </div>
 
     </div>
   )

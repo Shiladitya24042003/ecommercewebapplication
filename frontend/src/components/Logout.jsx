@@ -12,7 +12,7 @@ function Logout() {
                 ...authUser,
                 user: null
             })
-            
+
             localStorage.removeItem("Users")
             localStorage.removeItem("cartItems")
             toast.success("Logout Successfully")
@@ -26,15 +26,22 @@ function Logout() {
     }
 
     return (
-        <div>
-            <button
-                className='mx-2 px-3 py-2 bg-transparent border border-red-500 text-red-500 rounded-full hover:bg-pink-500 hover:text-white hover:shadow-pink-500/50 shadow-none transition-all duration-300 ease-in-out'
-                onClick={handleLogout}
-            >
-                Logout
-            </button>
-
+        <div className=''>
+            <div className="dropdown dropdown-hover">
+                <div tabIndex={0} role="button" className="btn m-1 bg-transparent border-none">
+                    <div className="avatar placeholder">
+                        <div className="ring-violet-500 ring-offset-base-100 w-7 rounded-full ring ring-offset-2">
+                            <span className='text-xl'>{authUser.name[0]}</span>
+                        </div>
+                    </div>
+                </div>
+                <ul tabIndex={0} className="dropdown-content menu bg-black rounded-box  z-[1] w-40 p-2 shadow">
+                    <li><a> Profile</a></li>
+                    <li><a onClick={handleLogout}>Logout</a></li>
+                </ul>
+            </div>
         </div>
+
     )
 }
 
