@@ -25,7 +25,7 @@ function Bnner() {
 
     return (
         <>
-            <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 flex flex-col md:flex-row my-10">
+            <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 flex flex-col md:flex-row md:my-10 mt-16">
                 {/* Left Side - Text */}
                 <div className="w-full md:w-1/2 mt:12 md:mt-20">
                     <div className="space-y-12">

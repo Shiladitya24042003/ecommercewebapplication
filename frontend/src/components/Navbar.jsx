@@ -44,19 +44,19 @@ function Navbar() {
                     <li className="group relative">
                         <Link to="/" className="hover:text-blue-500">
                             Home
-                            <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                            <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-middle duration-300"></span>
                         </Link>
                     </li>
                     <li className="group relative">
                         <Link to="/course" className="hover:text-blue-500">
                             Courses
-                            <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                            <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-middle duration-300"></span>
                         </Link>
                     </li>
                     <li className="group relative">
                         <a href="/about" className="hover:text-blue-500">
                             About
-                            <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                            <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-middle duration-300"></span>
                         </a>
                     </li>
                 </ul>
@@ -90,7 +90,7 @@ function Navbar() {
                             {navItems}
                         </ul>
                     </div>
-                    <Link to="/" className="text-xl md:text-3xl font-bold cursor-pointer">webGranth</Link>
+                    <Link to="/" className="text-xl md:text-3xl font-bold cursor-pointer hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-violet-400 hover:via-pink-500 hover:to-red-600 bg-[length:200%_200%] animate-gradient transition-all duration-500 ease-out">webGranth</Link>
                 </div>
 
                 <div className={`${sticky ? "text-center animate-center" : "navbar-end animate-uncenter"} flex-grow`}>
@@ -100,7 +100,7 @@ function Navbar() {
                         </ul>
                     </div>
 
-                    <label className="swap swap-rotate">
+                    <label className="ml-5 md:px-1 swap swap-rotate">
                         <input type="checkbox" className="theme-controller" value="synthwave" />
 
                         {/* Sun icon */}

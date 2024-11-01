@@ -50,3 +50,26 @@ export const login = async (req, res) => {
         })
     }
 }
+
+export const change = async (req, res) => {
+    try {
+        const userId = req.body.userId;
+        const updated_data = req.body;
+
+        const updatedDocument = await User.findOneAndUpdate(
+            { userId }, // Use userId as the filter
+            updated_data,
+            {
+                new: true, // Return the updated document
+                runValidators: true // Ensure validation rules are applied
+            }
+        );
+        if (!updatedDocument) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json(updatedDocument);
+    } catch (error) {
+        res.status(500).json({ message: "Error updating document", error });
+    }
+};

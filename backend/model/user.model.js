@@ -16,6 +16,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    booksPurchased : {
+        type: [String],
+    },
     userType: {
         type: String,
         default: "CUSTOMER",
