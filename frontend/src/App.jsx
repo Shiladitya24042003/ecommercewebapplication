@@ -10,6 +10,7 @@ import Contact from './components/Contact'
 import AdminLogin from './components/AdminLogin'
 import { CartProvider } from './context/CartContext'
 import AdminLoginPage from './components/AdminLoginPage'
+import Profile from './components/Profile'
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -33,7 +34,7 @@ function App() {
             <Navigate to='/'/>
             </>
           } />
-
+          <Route path='/profile' element={<Profile/>} />
 
         </Routes>
         <Toaster />

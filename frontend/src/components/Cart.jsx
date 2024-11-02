@@ -1,26 +1,45 @@
 import React from 'react';
+import axios from 'axios';
 import { useCart } from '../context/CartContext';
-import tick from "../../public/tick.svg"
+import { useAuth } from '../context/AuthProvider'; // Assuming `useAuth` is exported from AuthProvider
+import tick from "../../public/tick.svg";
 
 const Cart = () => {
-    const { cartItems, removeFromCart, clearCart } = useCart(); // Import clearCart
+    const { cartItems, removeFromCart, clearCart } = useCart();
+    const [authUser] = useAuth(); // Assuming `authUser` contains the user details
 
     const calculateTotal = () => {
         return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     };
 
-    const handleCheckout = () => {
-        // Clear the cart
-        clearCart();
+    const handleCheckout = async () => {
+        try {
+            const userId = authUser.userId || authUser.name; // Get userId from authUser
 
-        // Open the modal
-        const modal = document.getElementById('my_modal_2');
-        modal.showModal();
+            // Structure data to match the expected format for updating the user
+            const data = {
+                userId: userId,
+                booksPurchased: cartItems
+            };
 
-        // Close the modal after 1 second (1000 milliseconds)
-        setTimeout(() => {
-            modal.close();
-        }, 1000);
+            // Make the API call to update the user's `booksPurchased` field
+            await axios.put('http://localhost:4001/user/update', data);
+
+            // Clear the cart
+            clearCart();
+
+            // Open the modal
+            const modal = document.getElementById('my_modal_2');
+            modal.showModal();
+
+            // Close the modal after 1 second
+            setTimeout(() => {
+                modal.close();
+            }, 1000);
+        } catch (error) {
+            console.error("Error updating cart:", error);
+            alert("Checkout failed, please try again.");
+        }
     };
 
     return (
@@ -93,7 +112,6 @@ const Cart = () => {
                     <button>close</button>
                 </form>
             </dialog>
-
         </div>
     );
 };

@@ -17,7 +17,12 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     booksPurchased : {
-        type: [String],
+        type: [{
+            id : String,
+            name: String,
+            price: Number,
+            quantity : Number
+        }],
     },
     userType: {
         type: String,

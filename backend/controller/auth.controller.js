@@ -53,17 +53,19 @@ export const login = async (req, res) => {
 
 export const change = async (req, res) => {
     try {
-        const userId = req.body.userId;
-        const updated_data = req.body;
+        const { userId, booksPurchased } = req.body;
 
         const updatedDocument = await User.findOneAndUpdate(
-            { userId }, // Use userId as the filter
-            updated_data,
+            { userId },
+            {
+                $push: { booksPurchased: { $each: booksPurchased } }, // Append new booksPurchased items
+            },
             {
                 new: true, // Return the updated document
-                runValidators: true // Ensure validation rules are applied
+                runValidators: true, // Ensure validation rules are applied
             }
         );
+
         if (!updatedDocument) {
             return res.status(404).json({ message: "User not found" });
         }
