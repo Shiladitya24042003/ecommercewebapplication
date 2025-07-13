@@ -72,6 +72,7 @@ app.use("/book", bookRouter)
 app.use("/category", creatRouter)
 app.use("/user", userRouter)
 app.use('/del', deleteBooksRouter)
+app.use('/getUser', userRouter)
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`)
 })

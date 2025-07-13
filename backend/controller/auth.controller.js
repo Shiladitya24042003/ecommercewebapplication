@@ -75,3 +75,17 @@ export const change = async (req, res) => {
         res.status(500).json({ message: "Error updating document", error });
     }
 };
+
+
+export const getUser = async (req, res) => {
+    try {
+        const { userId } = req.body;  // Extract userId directly from req.body
+        const user_details = await User.findOne({ userId });
+        res.status(200).json(user_details);
+    } catch (error) {
+        console.log("Error:", error);
+        return res.status(500).send({
+            message: "Error while retrieving user data"
+        });
+    }
+};

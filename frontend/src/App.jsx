@@ -11,6 +11,7 @@ import AdminLogin from './components/AdminLogin'
 import { CartProvider } from './context/CartContext'
 import AdminLoginPage from './components/AdminLoginPage'
 import Profile from './components/Profile'
+import About from './components/About'
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -27,6 +28,7 @@ function App() {
           <Route path="/cart" element={<Cart cartItems={cartItems} />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/adminloginpage' element={<AdminLoginPage />} />
+          <Route path="/about" element={<About />} />
           <Route path='/adminlogin' element={
             authUser && authUser.userType === "ADMIN" ? (
               <AdminLogin />
